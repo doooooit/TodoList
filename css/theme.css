@@ -27,9 +27,47 @@ body {
     display: inline;
 }
 
-#create-new-button {
-    height: 37px;
+#create-new {
+    background: rgb(66, 133, 244);
+    border: 0;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+    font-size: .875em;
+    margin: 0;
+    padding: 10px 24px;
+    text-align: center;
+    text-indent: 0px;
+    text-shadow: none;
+    font: 13px Arial;
+    box-shadow:
+        0 2px 2px 0 rgba(0, 0, 0, .03),
+        0 1px 4px 0 rgba(0, 0, 0, .048),
+        0 3px 1px -2px rgba(0, 0, 0, .12);
 }
+
+#create-new:hover {
+    box-shadow:
+        0 5px 3px -3px rgba(0, 0, 0, .2),
+        -4px 0 2px -2px rgba(0, 0, 0, .06),
+        4px 0 2px -2px rgba(0, 0, 0, .06),
+        0 2px 2px 0 rgba(0, 0, 0, .03),
+        0 1px 4px 0 rgba(0, 0, 0, .048),
+        0 3px 1px -2px rgba(0, 0, 0, .12);
+}
+
+#create-new:active {
+    box-shadow:
+        0 2px 1px rgba(0, 0, 0, .12) inset,
+        1px 0 1px rgba(0, 0, 0, .12) inset,
+        -1px 0 1px rgba(0, 0, 0, .12) inset;
+}
+#create-new:focus {
+    outline: inherit;
+}
+
 
 #main-box {
     width: 640px;
@@ -38,15 +76,69 @@ body {
 }
 
 .list-items {
-    height: 103px;
-    background: #f9f9f9;
+    height: 130px;
+    margin-top: 10px;
     box-shadow:
         0 2px 2px 0 rgba(0, 0, 0, .03),
         0 1px 4px 0 rgba(0, 0, 0, .048),
         0 3px 1px -2px rgba(0, 0, 0, .12);
 }
 
+.items-active {
+    background: white;
+}
+
+.items-complete {
+    background: rgba(255, 255, 255, .6);
+}
+
 .items-content {
     margin: 10px;
     padding: 16px 16px 16px 50px;
+}
+
+.items-active .item-topic {
+    color: #5a5a5a;
+    font-weight: 500;
+}
+
+.items-active .item-date {
+    color: #969696;
+    margin-top: 2px;
+    padding: 0;
+    font-size: 70%;
+}
+
+.items-active .content {
+    color: #5a5a5a;
+    margin-top: 2px;
+    word-break: normal;
+}
+
+.items-complete .item-topic {
+    -webkit-margin-end: 12px;
+    color: rgba(186, 186, 186, .6);
+    font-weight: 500;
+    text-decoration: line-through;
+}
+
+.items-complete .item-date {
+    color: #969696;
+    margin-top: 2px;
+    padding: 0;
+    font-size: 70%;
+}
+
+.items-complete .item-date .create{
+    -webkit-margin-end: 20px;
+}
+
+.items-complete .content {
+    color: #969696;
+    margin-top: 2px;
+    word-break: normal;
+}
+
+footer {
+    text-align: center;
 }
