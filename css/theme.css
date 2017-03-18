@@ -1,0 +1,52 @@
+* {margin: 0;}
+
+body {
+    background: #f1f1f1;
+    font-family: Roboto, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif;
+    font-size: 81.25%;
+}
+
+#header {
+    margin: 0;
+    height: 56px;
+    background-color: #3367d6;
+}
+
+#nav {
+    width: 640px;
+    margin: 0 auto;
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    color: #fff;
+    margin: 0;
+    display: inline;
+}
+
+#create-new-button {
+    height: 37px;
+}
+
+#main-box {
+    width: 640px;
+    margin: 50px auto;
+    padding: 5px;
+}
+
+.list-items {
+    height: 103px;
+    background: #f9f9f9;
+    box-shadow:
+        0 2px 2px 0 rgba(0, 0, 0, .03),
+        0 1px 4px 0 rgba(0, 0, 0, .048),
+        0 3px 1px -2px rgba(0, 0, 0, .12);
+}
+
+.items-content {
+    margin: 10px;
+    padding: 16px 16px 16px 50px;
+}
