@@ -27,6 +27,16 @@ body {
     display: inline;
 }
 
+#mask {
+    background-color: black;
+    opacity: 0.7;
+    filter: alpha(opacity=50);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+
 #create-new {
     background: rgb(66, 133, 244);
     border: 0;
@@ -117,7 +127,7 @@ body {
 
 .items-complete .item-topic {
     -webkit-margin-end: 12px;
-    color: rgba(186, 186, 186, .6);
+    color: #969696;
     font-weight: 500;
     text-decoration: line-through;
 }
