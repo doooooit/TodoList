@@ -37,7 +37,7 @@ body {
     z-index: 1000;
 }
 
-#create-new {
+.button {
     background: rgb(66, 133, 244);
     border: 0;
     border-radius: 2px;
@@ -58,7 +58,7 @@ body {
         0 3px 1px -2px rgba(0, 0, 0, .12);
 }
 
-#create-new:hover {
+.button:hover {
     box-shadow:
         0 5px 3px -3px rgba(0, 0, 0, .2),
         -4px 0 2px -2px rgba(0, 0, 0, .06),
@@ -68,13 +68,13 @@ body {
         0 3px 1px -2px rgba(0, 0, 0, .12);
 }
 
-#create-new:active {
+.button:active {
     box-shadow:
         0 2px 1px rgba(0, 0, 0, .12) inset,
         1px 0 1px rgba(0, 0, 0, .12) inset,
         -1px 0 1px rgba(0, 0, 0, .12) inset;
 }
-#create-new:focus {
+.button:focus {
     outline: inherit;
 }
 
@@ -86,7 +86,7 @@ body {
 }
 
 .list-items {
-    height: 130px;
+    height: 160px;
     margin-top: 10px;
     box-shadow:
         0 2px 2px 0 rgba(0, 0, 0, .03),
@@ -102,7 +102,7 @@ body {
     background: rgba(255, 255, 255, .6);
 }
 
-.items-content {
+.items-container {
     margin: 10px;
     padding: 16px 16px 16px 50px;
 }
@@ -119,7 +119,7 @@ body {
     font-size: 70%;
 }
 
-.items-active .content {
+.items-active .item-content {
     color: #5a5a5a;
     margin-top: 2px;
     word-break: normal;
@@ -143,11 +143,78 @@ body {
     -webkit-margin-end: 20px;
 }
 
-.items-complete .content {
+.items-complete .item-content {
     color: #969696;
     margin-top: 2px;
     word-break: normal;
 }
+
+#registry-container {
+    height: 380px;
+    width: 670px;
+    position: fixed;
+    z-index: 1001;
+    box-sizing: border-box;
+    background: #fff;
+    color: #5a5a5a;
+}
+
+#beautifier {
+    height: 5px;
+    width: 100%;
+    background-color: #3367d6;
+    box-sizing: border-box;
+}
+
+#registry {
+    box-sizing: border-box;
+    padding: 20px 35px;
+}
+
+#topic {
+    height: 2.5em;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #969696;
+    border-radius: 5px;
+    padding: 5px;
+    color: #a8adba;
+}
+
+#expiration-date {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#year {
+    -webkit-margin-end: 7px;
+}
+#month {
+    -webkit-margin-end: 7px;
+}
+#day {
+    -webkit-margin-end: 7px;
+}
+
+#content {
+    height: 214px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #969696;
+    border-radius: 5px;
+    padding: 5px;
+    resize: none;
+    color: #a8adba;
+}
+
+#registry-buttons {
+    margin: 10px auto;
+    width: 232px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 footer {
     text-align: center;
