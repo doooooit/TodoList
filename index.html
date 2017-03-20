@@ -9,41 +9,44 @@
 </head>
 
 <body>
-    <header role="banner" id="header">
-        <nav role="navigation" id="nav">
-            <h1 class="nav-logo" id="logo">TodoList</h1>
-            <button class="button" id="create-new">新建事项</button>
-        </nav>
-    </header>
+    <div id="main-container">
+        <header role="banner" id="header">
+            <nav role="navigation" id="nav">
+                <h1 class="nav-logo" id="logo">TodoList</h1>
+                <button class="button" id="create-new">新建事项</button>
+            </nav>
+        </header>
 
-    <main role="main" id="main-box">
-        <div class="list-items items-active">
-            <div class="items-container">
-                <h2 class="item-topic">A New Item</h2>
-                <div class="item-date">
-                    <span>创建时间：</span><time datetime="2017-03-18">2017-03-18</time>
+        <main role="main" id="main-box">
+            <div class="list-items items-active">
+                <div class="items-container">
+                    <h2 class="item-topic">A New Item</h2>
+                    <div class="item-date">
+                        <span>创建时间：</span><time datetime="2017-03-18">2017-03-18</time>
+                    </div>
+                    <p class="item-content">这是TodoList事项内容</p>
                 </div>
-                <p class="item-content">这是TodoList事项内容</p>
             </div>
-        </div>
 
-        <div class="list-items items-complete">
-            <div class="items-container">
-                <h2 class="item-topic">A New Item</h2>
-                <div class="item-date">
-                    <span class="create">创建时间：<time datetime="2017-03-18">2017-03-18</time></span>
-                    <span class="complete">完成时间：<time datetime="2017-03-19">2017-03-19</time></span>
+            <div class="list-items items-complete">
+                <div class="items-container">
+                    <h2 class="item-topic">A New Item</h2>
+                    <div class="item-date">
+                        <span class="create">创建时间：<time datetime="2017-03-18">2017-03-18</time></span>
+                        <span class="complete">完成时间：<time datetime="2017-03-19">2017-03-19</time></span>
+                    </div>
+                    <p class="item-content">这是TodoList事项内容</p>
                 </div>
-                <p class="item-content">这是TodoList事项内容</p>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <footer role="pageinfo">
-        <p><small>
+        <footer role="pageinfo">
+            <p><small>
             <a href="https://github.com/doooooit/TodoList">GitHub Repository</a>
              &copy; shangxke
          </small></p>
-    </footer>
+        </footer>
+    </div>
 </body>
+
 </html>
