@@ -90,13 +90,14 @@ function dialog() {
     cancel.onclick = function() {
         document.body.removeChild(document.querySelector('#dialog'));
         document.body.removeChild(document.querySelector('#mask'));
-        document.body.removeChild(deEmphasized);
+        document.body.removeChild(document.querySelector('#mainpage-de-emphasized'));
     }
 }
 
 function createNew() {
     // 动态创建对主页面的虚化动画 css 代码
     var deEmphasized = document.createElement('style');
+    deEmphasized.id = 'mainpage-de-emphasized';
     deEmphasized.innerHTML = '#main-container{transition:.3s filter;filter: blur(3px);}';
     document.body.appendChild(deEmphasized);
 
