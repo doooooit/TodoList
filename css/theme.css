@@ -144,7 +144,7 @@ body {
     box-sizing: border-box;
     background: #fff;
     color: #5a5a5a;
-    box-shadow: 0 5px 20px -2px black;
+    box-shadow: 0 5px 38px -8px black;
 }
 
 #beautifier {
@@ -170,7 +170,7 @@ body {
     color: #a8adba;
 }
 
-#expiration-date {
+#valid-date {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -209,4 +209,5 @@ body {
 
 footer {
     text-align: center;
+    margin-bottom: 3em;
 }
