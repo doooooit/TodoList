@@ -10,5 +10,15 @@ FORMS.store = function () {
     };
     var submit = window.MODELS.createAssignment(assignment);
     FORMS.storage[submit.id] = JSON.stringify(submit);
-    var  a = null;
+}
+
+FORMS.load = function () {
+    var arrAssignments = []; // 将取出的数据保存在一个数组中
+    for (let id in FORMS.storage) {
+        var assignment = JSON.parse(FORMS.storage[id]);
+        arrAssignments.push(assignment);
+    }
+    // 将事项按 id 逆序排序，即越早创建的(时间戳越小的)越排在后面
+    arrAssignments.sort((x, y) => -(x.id - y.id));
+    return arrAssignments;
 }
