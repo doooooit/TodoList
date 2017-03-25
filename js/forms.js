@@ -15,6 +15,7 @@ FORMS.store = function () {
 FORMS.load = function () {
     var arrAssignments = []; // 将取出的数据保存在一个数组中
     for (let id in FORMS.storage) {
+        // 使用 for ... in 遍历对象的 key
         var assignment = JSON.parse(FORMS.storage[id]);
         arrAssignments.push(assignment);
     }

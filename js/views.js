@@ -1,7 +1,17 @@
 function dialog() {
     var dialog = document.createElement('div');
     dialog.id = "dialog";
-    dialog.innerHTML = window.dialogHTMLCodes;
+    dialog.innerHTML = '<div id="beautifier"></div>' +
+        '<form id="registry">' +
+        '<input id="topic" type="text" value="事项主题" name="topic" required="required" max="60" />' +
+        '</div>' +
+        '<textarea id="content">事项内容</textarea>' +
+        '<div id="registry-buttons">' +
+        '<button class="button" id="cancel">取消</button>' +
+        '<input class="button" id="submit" type="submit" value="提交" name="submitBtn" />' +
+        '</div>' +
+        '</form>';
+
     document.body.appendChild(dialog);
     // innerX 为浏览器实际显示页面的尺寸
     var innerH = window.innerHeight;
@@ -35,6 +45,7 @@ function dialog() {
 function createNew() {
     // 动态创建对主页面的虚化动画 css 代码
     var deEmphasized = document.createElement('style');
+    deEmphasized.id = 'mainpage-de-emphasized';
     deEmphasized.innerHTML = '#main-container{transition:.3s filter;filter: blur(3px);}';
     document.body.appendChild(deEmphasized);
 
@@ -70,10 +81,12 @@ function createAssignmentCard(obj) {
             }
             return res;
         }
+
         var dateObj = new Date(Date.parse(dateStr));
         var res = '';
+
         res += dateObj.getFullYear() + '-';
-        res += doubleDigit(dateObj.getMonth()) + '-';
+        res += doubleDigit(dateObj.getMonth() + 1) + '-';
         res += doubleDigit(dateObj.getDate()) + ' ';
         res += doubleDigit(dateObj.getHours()) + ':';
         res += doubleDigit(dateObj.getMinutes()) + ':';
@@ -84,30 +97,29 @@ function createAssignmentCard(obj) {
 
     var now = new Date();
     var card = document.createElement('div');
-    if (!obj.isComplete && Date.parse(obj.validDate) >= now.getTime()) {
-        card.className = 'list-items items-active';
-        var validDate = document.createElement('span');
-        validDate.className = 'valid';
-        validDate.innerText = '有效期至：';
-        var validTime = document.createElement('time');
-        validTime.datetime = obj.validDate;
-        validTime.innerText = formatDate(obj.validDate);
-        validDate.appendChild(validTime);
-    } else if (obj.isComplete) {
-        card.className = "list-items items-complete";
-        var completeDate = document.createElement('span');
-        completeDate.className = 'complete';
-        completeDate.innerText = '完成时间：';
-        var completeTime = document.createElement('time');
-        completeTime.datetime = obj.completeDate;
-        completeTime.innerText = formatDate(obj.completeDate);
-        completeDate.appendChild(completeTime);
-    } else if (Date.parse(obj.validDate) <= now.getTime()) {
-        card.className = "list-items items-unvalid";
-    }
+    card.id = String(obj.id);
     var container = document.createElement('div');
     container.className = "items-container";
     card.appendChild(container);
+
+
+    // 添加任务事项完成的按钮
+    var assignmentBtn = document.createElement('button');
+    assignmentBtn.className = 'button';
+    assignmentBtn.id = 'button-' + String(obj.id);
+    container.appendChild(assignmentBtn);
+
+    // 绑定按钮事件响应
+    assignmentBtn.onclick = function () {
+        var now = new Date();
+        var assignmentID = Number(this.id.substring(7));
+        var assignmentObj = JSON.parse(FORMS.storage[assignmentID]);
+        assignmentObj.completeDate = now;
+        assignmentObj.isComplete = true;
+        FORMS.storage[assignmentID] = JSON.stringify(assignmentObj);
+        var assignmentCard = document.getElementById(assignmentID);
+        refresh();
+    }
 
     // 事项主题
     var topic = document.createElement('h2');
@@ -125,12 +137,27 @@ function createAssignmentCard(obj) {
     createDate.innerText = '创建时间：'
     itemDate.appendChild(createDate);
     var createTime = document.createElement('time');
-    createTime.datetime = obj.createDate;
+    createTime.datetime = obj.createDate.toLocaleString();
     createTime.innerText = formatDate(obj.createDate);
     createDate.appendChild(createTime);
-
     itemDate.appendChild(createDate);
-    if (obj.isComplete) {
+
+    if (!obj.isComplete) {
+        card.className = 'list-items items-active';
+        assignmentBtn.classList.add('check-btn');
+        assignmentBtn.innerText = '点击完成';
+    } else {
+        card.className = "list-items items-complete";
+        assignmentBtn.classList.add('completed-btn');
+        assignmentBtn.innerText = '已经完成';
+        assignmentBtn.disabled = 'disabled';
+        var completeDate = document.createElement('span');
+        completeDate.className = 'complete';
+        completeDate.innerText = '完成时间：';
+        var completeTime = document.createElement('time');
+        completeTime.datetime = obj.completeDate.toLocaleString();
+        completeTime.innerText = formatDate(obj.completeDate);
+        completeDate.appendChild(completeTime);
         itemDate.appendChild(completeDate);
     }
 
@@ -143,21 +170,13 @@ function createAssignmentCard(obj) {
     document.querySelector('#main-box').appendChild(card);
 }
 
-
 function refresh() {
-    var arrAssignments = []; // 将取出的数据保存在一个数组中
-    for (let id in FORMS.storage) {
-        var assignment = JSON.parse(FORMS.storage[id]);
-        arrAssignments.push(assignment);
-    }
-    // 将事项按 id 逆序排序，即越早创建的(时间戳越小的)越排在后面
-    arrAssignments.sort((x, y) => -(x.id - y.id));
-
-    // 将数组中的数据全部加入到文档流中
-    for (let e of arrAssignments) {
+    document.querySelector('#main-box').innerHTML = '';
+    for (let e of FORMS.load()) {
         createAssignmentCard(e);
     }
 }
+
 
 window.onload = function() {
     refresh();
@@ -168,5 +187,3 @@ window.onload = function() {
         return;
     }
 }
-
-window.addEventListener("storage", refresh, false);
