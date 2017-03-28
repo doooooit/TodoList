@@ -20,7 +20,7 @@ function dialog() {
     var screenH = screen.height;
     // 元素位于整个显示器的中央，比页面中央偏上一些，更符合视觉习惯
     dialog.style.top = (screenH - dialog.offsetHeight) / 2 - (screenH - innerH) + "px";
-    dialog.style.left = (innerW - dialog.offsetWidth) / 2 + "px";
+    dialog.style.left = (innerW - dialog.offsetWidth) / 2 - 6 + "px";
 
     var topic = document.querySelector('#topic');
     topic.onclick = function() {

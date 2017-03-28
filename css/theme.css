@@ -4,7 +4,7 @@
 
 body {
     background: #f1f1f1;
-    font-family: Roboto, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif;
+    font-family: Roboto, "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Zen Hei", sans-serif;
     font-size: 81.25%;
 }
 
@@ -168,7 +168,7 @@ body {
 
 #dialog {
     height: 380px;
-    width: 670px;
+    width: 640px;
     position: fixed;
     z-index: 1001;
     box-sizing: border-box;
@@ -224,7 +224,7 @@ label {
 
 #registry-buttons {
     margin: 10px auto;
-    width: 232px;
+    width: 20em;
     display: flex;
     justify-content: space-between;
     align-items: center;
